@@ -4,13 +4,23 @@ from  Router import *
 def lambda_handler(event, context):
 	client = initSCSClient();
 	router = initRouter()
-	result = router.getActivity(event["activity"])(client,event["input"])
-	return result
+	print event
+	name= event['currentIntent']['name']
+	input = event['currentIntent']['slots']
+	activityResult = router.getActivity(name)(client,input)
+	return handleResult(activityResult)
+
+def handleResult (activityResult):
+	return {
+		"dialogAction": {
+    		"type": "Close"
+    		}
+	}
 
 def initRouter():
 	# add acitivity in this map
 	pathMap = {
-		"createTagOption":createTagOption
+		"CreateTagOption":createTagOption
 	}
 	return Router(pathMap)
 
