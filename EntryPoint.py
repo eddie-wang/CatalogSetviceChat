@@ -15,7 +15,8 @@ def lambda_handler(event, context):
 def initRouter(client):
 	# add acitivity in this map
 	pathMap = {
-		"CreateTagOption":CreateTagOption(client)
+		"CreateTagOption":CreateTagOption(client),
+		"UpdateTagOption":UpdateTagOption(client),
 	}
 	return Router(pathMap)
 
