@@ -4,7 +4,7 @@ class UpdateTagOption:
 
 	def handleRequest(self, input):
 		_id=input["id"]
-    	value=input["value"],
-    	active=inpiut["active"]
-		response = self.client.update_tag_option(Id=_id, Value = "value", Active = active)
+		value=input["value"]
+		active=input["active"]
+		response = self.client.update_tag_option(Id=_id, Value = value, Active = active)
 		return response

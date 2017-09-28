@@ -1,6 +1,7 @@
 import boto3 
 from  Router import *
 from CreateTagOption import *
+from UpdateTagOption import *
 
 def lambda_handler(event, context):
 	client = initSCSClient();
