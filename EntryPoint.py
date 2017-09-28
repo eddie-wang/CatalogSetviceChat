@@ -1,26 +1,28 @@
 import boto3 
-from Activities import *
 from  Router import *
+from CreateTagOption import *
+
 def lambda_handler(event, context):
 	client = initSCSClient();
-	router = initRouter()
+	router = initRouter(client)
 	print event
 	name= event['currentIntent']['name']
 	input = event['currentIntent']['slots']
-	activityResult = router.getActivity(name)(client,input)
+	activityResult = router.getActivity(name).handleRequest(input)
 	return handleResult(activityResult)
 
 def handleResult (activityResult):
 	return {
 		"dialogAction": {
-    		"type": "Close"
+    		"type": "Close",
+    		"fulfillmentState": "Fulfilled"
     		}
 	}
 
-def initRouter():
+def initRouter(client):
 	# add acitivity in this map
 	pathMap = {
-		"CreateTagOption":createTagOption
+		"CreateTagOption":CreateTagOption(client)
 	}
 	return Router(pathMap)
 
@@ -30,10 +32,12 @@ def initSCSClient():
 
 if __name__ == "__main__":
 	input = {
-		"activity" : "createTagOption",
-		"input" : {
-			"key":"key1",
-			"value":"value2"
+		"currentIntent":{
+		"name":"CreateTagOption",
+		"slots":{
+			"key":"keyasd",
+			"value":"valueasdf"
+		}
 		}
 	}
 	lambda_handler(input , None)
