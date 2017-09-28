@@ -8,16 +8,9 @@ def lambda_handler(event, context):
 	print event
 	name= event['currentIntent']['name']
 	input = event['currentIntent']['slots']
-	activityResult = router.getActivity(name).handleRequest(input)
-	return handleResult(activityResult)
-
-def handleResult (activityResult):
-	return {
-		"dialogAction": {
-    		"type": "Close",
-    		"fulfillmentState": "Fulfilled"
-    		}
-	}
+	#activityResult = router.getActivity(name).handleRequest(input)
+	#print activityResult
+	return router.getActivity(name).handleRequest(input)
 
 def initRouter(client):
 	# add acitivity in this map
