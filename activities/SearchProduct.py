@@ -1,4 +1,4 @@
-from pprint import pprint
+from pprint import pformat
 
 class SearchProduct:
     def __init__ (self, client):
@@ -43,7 +43,7 @@ class SearchProduct:
 
     def fulfillResponse(self, result):
         string1 = len(result)
-        string2 = pprint(result)
+        string2 = pformat(result)
         return {
             "dialogAction": {
                 "type": "Close",

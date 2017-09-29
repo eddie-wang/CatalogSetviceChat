@@ -30,9 +30,7 @@ def initRouter(client):
 def initSCSClient():
 	# TODO add credential login later
 	return boto3.client(
-			'servicecatalog',
-			aws_access_key_id='AKIAJ5R5J63OZPA72FTQ',
-			aws_secret_access_key='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'
+			'servicecatalog'
 		)
 
 if __name__ == "__main__":
