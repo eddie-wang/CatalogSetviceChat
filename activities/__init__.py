@@ -1,1 +1,1 @@
-__all__ = ["CreateTagOption","UpdateTagOption","DeactivateTagOption","ActivateTagOption"]
+__all__ = ["CreateTagOption","UpdateTagOption","DeactivateTagOption","ActivateTagOption","SearchProduct"]

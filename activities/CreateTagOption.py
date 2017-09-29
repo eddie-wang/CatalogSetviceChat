@@ -21,24 +21,6 @@ class CreateTagOption:
 			    "message": {
 			      "contentType": "PlainText",
 			      "content": errorMessage
-			    },
-			   "responseCard": {
-			      "version": 1,
-			      "contentType": "application/vnd.amazonaws.card.generic",
-			      "genericAttachments": [
-			          {
-			             "title":"You Failed",
-			             "subTitle":"We are sorry about that.",
-			             "imageUrl":"goo.gl/ou6g9X",
-			             "attachmentLinkUrl":"URL of the attachment to be associated with the card",
-			             #"buttons":[ 
-			             #    {
-			             #       "text":"button-text",
-			             #       "value":"Value sent to server on button click"
-			             #    }
-			             # ]
-			           } 
-			        ] 
 			    }
   			}
 		}

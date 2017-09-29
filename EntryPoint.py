@@ -1,13 +1,8 @@
-import boto3 
-<<<<<<< HEAD
-from  Router import *
-from CreateTagOption import *
-from UpdateTagOption import *
+import boto3
 
-=======
 from activities import *
 from Router import Router
->>>>>>> add __init__, update activate/deactivate tagoption
+
 def lambda_handler(event, context):
 	client = initSCSClient();
 	router = initRouter(client)
@@ -24,7 +19,8 @@ def initRouter(client):
 		"CreateTagOption":CreateTagOption.CreateTagOption(client),
 		"UpdateTagOption":UpdateTagOption.UpdateTagOption(client),
 		"DeactivateTagOption":DeactivateTagOption.DeactivateTagOption(client),
-		"ActivateTagOption":ActivateTagOption.ActivateTagOption(client)
+		"ActivateTagOption":ActivateTagOption.ActivateTagOption(client),
+		"SearchProduct":SearchProduct.SearchProduct(client)
 	}
 	return Router(pathMap)
 
