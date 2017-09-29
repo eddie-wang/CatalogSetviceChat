@@ -50,10 +50,10 @@ class SearchProduct:
                 "fulfillmentState": "Fulfilled",
                 "message": {
                   "contentType": "PlainText",
-                  "content": """You have {string1} Products in your account.
+                  "content": """You have {num} Products in your account.
                                 Here is a list of your products:
-                                {string2}
-                                """
+                                {list}
+                                """.format(num=string1, list=string2)
                 }
             }
         }
