@@ -16,7 +16,7 @@ class SearchProduct:
 
         while nextPageToken is not None and len(nextPageToken)>0:
             try:
-                response self.client.SearchProduct(NextPageToken = nextPageToken)
+                response = self.client.SearchProduct(NextPageToken = nextPageToken)
             except Exception as e:
                 return self.failedResponse(str(e))
             else:
