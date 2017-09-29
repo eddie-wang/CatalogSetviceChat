@@ -20,7 +20,7 @@ def initRouter(client):
 		"UpdateTagOption":UpdateTagOption.UpdateTagOption(client),
 		"DeactivateTagOption":DeactivateTagOption.DeactivateTagOption(client),
 		"ActivateTagOption":ActivateTagOption.ActivateTagOption(client),
-		"SearchProduct":SearchProduct.SearchProduct(client)
+		"SearchProducts":SearchProduct.SearchProduct(client)
 	}
 	return Router(pathMap)
 
