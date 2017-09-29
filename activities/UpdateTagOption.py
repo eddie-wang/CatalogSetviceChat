@@ -10,7 +10,7 @@ class UpdateTagOption:
         except Exception, e:
             return self.failedResponse(str(e))
 
-        return self.fufillResponse()
+        return self.fulfillResponse()
 
     def failedResponse(self, errorMessage):
         return {

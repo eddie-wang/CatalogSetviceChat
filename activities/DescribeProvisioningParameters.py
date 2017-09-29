@@ -13,7 +13,7 @@ class DescribeProvisioningParameters:
         except Exception, e:
             return self.failedResponse(str(e))
 
-        return self.fufillResponse(response)
+        return self.fulfillResponse(response)
 
     def failedResponse(self, errorMessage):
         return {

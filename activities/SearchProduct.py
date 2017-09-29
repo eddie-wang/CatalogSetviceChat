@@ -7,23 +7,27 @@ class SearchProduct:
     def handleRequest(self, input):
 
         try:
-            response = self.client.SearchProduct()
+            response = self.client.search_products()
         except Exception, e:
             return self.failedResponse(str(e))
 
-        nextPageToken = response["NextPageToken"]
+        #if "NextPageToken" in response:
+        #    nextPageToken = response["NextPageToken"]
+        print response
+
         result = response["ProductViewSummaries"]
 
-        while nextPageToken is not None and len(nextPageToken)>0:
-            try:
-                response = self.client.SearchProduct(NextPageToken = nextPageToken)
-            except Exception as e:
-                return self.failedResponse(str(e))
-            else:
-                nextPageToken = response["NextPageToken"]
-                result.extend(response["ProductViewSummaries"])            
+        #while nextPageToken is not None and len(nextPageToken)>0:
+        #    try:
+        #        response = self.client.search_products(NextPageToken = nextPageToken)
+        #    except Exception as e:
+        #        return self.failedResponse(str(e))
+        #    else:
+        #        nextPageToken = response["NextPageToken"]
+        #        result.extend(response["ProductViewSummaries"])            
 
-        return self.fufillResponse(result)
+        print result
+        return self.fulfillResponse(result)
 
     def failedResponse(self, errorMessage):
         return {

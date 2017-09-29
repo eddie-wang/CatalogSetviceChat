@@ -34,7 +34,7 @@ def initSCSClient():
 if __name__ == "__main__":
 	input = {
 		"currentIntent":{
-		"name":"CreateTagOption",
+		"name":"SearchProducts",
 		"slots":{
 			"key":"keyasd",
 			"value":"valueasdf"
