@@ -36,10 +36,12 @@ def initSCSClient():
 if __name__ == "__main__":
 	input = {
 		"currentIntent":{
-		"name":"SearchProducts",
+		"name":"ProvisionProduct",
 		"slots":{
 			"key":"keyasd",
-			"value":"valueasdf"
+			"value":"valueasdf",
+			"productId":"prod-vmusblubalwok",
+			"provisionedName":"testpp1"
 		}
 		}
 	}

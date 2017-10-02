@@ -4,25 +4,37 @@ class ProvisionProduct:
         self.client = client
 
     def handleRequest(self, input):
-        try:
-            response = self.client.provision_product(
-              ProductId='string',
-              ProvisioningArtifactId='string',
-              PathId = '',
-              ProvisionedProductName = '', 
-              ProvisionParameters = [
-                {
+        productId = input["productId"]
+        ppName = input["provisionedName"]
 
-                },    
-              ],
-              ProvisionToken = uuid.uuid4()
+        try:
+          llp_response = self.client.list_launch_paths(ProductId=productId)
+        except Exception as e:
+          self.failedResponse("No valid launch path for this product")
+        
+        try:
+          lppara_response = self.client.list_provisioning_artifacts(ProductId=productId)
+        except Exception as e:
+          self.failedResponse("No valid provisioning artifact for this product")
+
+
+        try:
+            pp_response = self.client.provision_product(
+                ProductId=productId,
+                ProvisioningArtifactId=lppara_response["ProvisioningArtifactDetails"][0]['Id'],
+                PathId = llp_response["LaunchPathSummaries"][0]["Id"],
+                ProvisionedProductName = ppName,
+                ProvisionToken = str(uuid.uuid4())
               )
         except Exception, e:
             return self.failedResponse(str(e))
 
+        print pp_response
+
         return self.fulfillResponse()
 
     def failedResponse(self, errorMessage):
+        print errorMessage
         return {
             "dialogAction": {
                 "type": "Close",
@@ -30,18 +42,6 @@ class ProvisionProduct:
                 "message": {
                   "contentType": "PlainText",
                   "content": errorMessage
-                },
-               "responseCard": {
-                  "version": 1,
-                  "contentType": "application/vnd.amazonaws.card.generic",
-                  "genericAttachments": [
-                      {
-                         "title":"You Failed",
-                         "subTitle":"We are sorry about that.",
-                         "imageUrl":"goo.gl/ou6g9X",
-                         "attachmentLinkUrl":"URL of the attachment to be associated with the card",
-                       } 
-                    ] 
                 }
             }
         }
